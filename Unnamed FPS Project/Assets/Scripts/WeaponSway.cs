@@ -8,7 +8,7 @@ public class WeaponSway : MonoBehaviour
     [SerializeField] private float smooth;
     [SerializeField] private float multiplier;
 
-    private void Update()
+    protected void Update()
     {
         // get mouse input
         float mouseX = Input.GetAxisRaw("Mouse X") * multiplier;
