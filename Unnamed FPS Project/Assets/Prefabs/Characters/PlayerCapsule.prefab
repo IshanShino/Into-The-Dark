@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 5420857361349278248}
   - component: {fileID: 8616685848737228376}
   - component: {fileID: 4659685953915240208}
+  - component: {fileID: 7490449931721053785}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -177,7 +178,7 @@ Transform:
   - {fileID: 5393215578589016641}
   - {fileID: 238055451103090927}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &8616685848737228382
 CharacterController:
@@ -391,6 +392,20 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7490449931721053785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8616685848737228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e381cd3ba1fbf5468d3973b9d7a0dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMaxHP: 100
+  playerCurrentHP: 0
 --- !u!1001 &4568109068855544294
 PrefabInstance:
   m_ObjectHideFlags: 0

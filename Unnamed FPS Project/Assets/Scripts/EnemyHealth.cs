@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int enemyMaxHP = 100;
+    [SerializeField] int enemyMaxHP = 200;
     [SerializeField] int enemyCurrentHP = 0;
 
-    protected void Start()
+    void Start()
     {   
         enemyCurrentHP = enemyMaxHP;
     }
