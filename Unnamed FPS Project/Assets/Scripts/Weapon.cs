@@ -7,27 +7,42 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] Camera FPCamera;
     [SerializeField] float range = 200f;
-    [SerializeField] int M16Damage = 20;
-    [SerializeField] ParticleSystem M16MuzzleFlash;
+    [SerializeField] int damage = 20;
+    [SerializeField] float fireRate = 5f;
+    [SerializeField] Ammo ammoSlot;
+    [SerializeField] float timeBetweenShots = 1f;
+
+    private float nextTimeToFire = 0;
+
+    [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
-    protected void Update()
+    void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
+        {   
+            nextTimeToFire = Time.time + 1f / fireRate; 
             Shoot();
         }
     }
     void Shoot()
     {   
-        PlayMuzzleFlash();
-        ProcessRaycast();
+        if (ammoSlot.AmmoAmount > 0)
+            {
+                PlayMuzzleFlash();
+                ProcessRaycast();
+                ammoSlot.ReduceCurrentAmmo();
+            }
+        else
+        {
+            return;
+        }
     }
 
     private void PlayMuzzleFlash()
     {
-        if (M16MuzzleFlash.isPlaying == false)
+        if (muzzleFlash.isPlaying == false)
         {   
-            M16MuzzleFlash.Play();
+            muzzleFlash.Play();
         }
     }
 
@@ -39,7 +54,7 @@ public class Weapon : MonoBehaviour
             CreateHitImpact(hit);
             EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
             if (target == null) { return; }
-            target.TakeDamage(M16Damage);
+            target.TakeDamage(damage);
         }
         else
         {

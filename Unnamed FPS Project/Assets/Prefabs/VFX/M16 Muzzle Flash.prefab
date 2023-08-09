@@ -9902,7 +9902,7 @@ Transform:
   - {fileID: 400004}
   - {fileID: 400000}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!198 &19800004
 ParticleSystem:
@@ -13724,9 +13724,9 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 0
+    enabled: 1
     ratio: 0
-    light: {fileID: 0}
+    light: {fileID: 10800000}
     randomDistribution: 1
     color: 1
     range: 1
