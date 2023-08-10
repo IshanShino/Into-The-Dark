@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3893350510652184648}
+  - component: {fileID: 6924917007961824573}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -28,12 +29,25 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 389131333053922181}
-  - {fileID: 3623247587643013470}
   - {fileID: 5602725419409385456}
+  - {fileID: 3623247587643013470}
+  - {fileID: 389131333053922181}
   m_Father: {fileID: 5176683441999850560}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6924917007961824573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3790683304574470840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aebd6094642fc543b7c5807430be374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: 0
 --- !u!1 &4135013735270702863
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39779b9a2f795fd41aadd2b3c022ba0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoAmount: 30
+  ammoSlots: []
 --- !u!1001 &210756174496816238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -502,11 +516,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a3de5fdd82f571f4eb16a3c2530b4303, type: 2}
     - target: {fileID: 919132149155446097, guid: a1e726444afd3664786ce53e2e573e79, type: 3}
       propertyPath: m_Name
-      value: M16
+      value: M4A1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a1e726444afd3664786ce53e2e573e79, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -549,7 +563,7 @@ MonoBehaviour:
   damage: 20
   fireRate: 5
   ammoSlot: {fileID: 7038094649645769990}
-  timeBetweenShots: 1
+  ammoTypes: 2
   muzzleFlash: {fileID: 6267040054020940031}
   hitEffect: {fileID: 100002, guid: 00fedc70b62a31e448e8ccc298257b56, type: 3}
 --- !u!114 &99163943598755015
@@ -629,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2cf10fa706c7a4d42b5927d8e730f4e2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -672,7 +686,7 @@ MonoBehaviour:
   damage: 20
   fireRate: 10
   ammoSlot: {fileID: 7038094649645769990}
-  timeBetweenShots: 1
+  ammoTypes: 1
   muzzleFlash: {fileID: 7217365342853632710}
   hitEffect: {fileID: 100002, guid: 00fedc70b62a31e448e8ccc298257b56, type: 3}
 --- !u!114 &2087794949514273403
@@ -846,6 +860,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f9696fb6017be144a307b6586855ac0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5950604235152748152}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f9696fb6017be144a307b6586855ac0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2967772833901852260}
   m_SourcePrefab: {fileID: 100100000, guid: 8f9696fb6017be144a307b6586855ac0, type: 3}
 --- !u!1 &5083211275178278218 stripped
 GameObject:
@@ -869,9 +886,24 @@ MonoBehaviour:
   damage: 20
   fireRate: 0.5
   ammoSlot: {fileID: 7038094649645769990}
-  timeBetweenShots: 1
+  ammoTypes: 0
   muzzleFlash: {fileID: 9180104313554036112}
   hitEffect: {fileID: 100002, guid: 00fedc70b62a31e448e8ccc298257b56, type: 3}
+--- !u!114 &2967772833901852260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083211275178278218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d809187f189d4384b943d344be9ea485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FPCamera: {fileID: 0}
+  defaultFOV: 40
+  zoomedInFOV: 25
 --- !u!4 &5602725419409385456 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8f9696fb6017be144a307b6586855ac0, type: 3}
@@ -887,7 +919,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100006, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
       propertyPath: m_Name
-      value: M16 Muzzle Flash
+      value: M4 Muzzle Flash
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
       propertyPath: m_RootOrder
@@ -958,7 +990,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100006, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
       propertyPath: m_Name
-      value: M16 Muzzle Flash
+      value: M4 Muzzle Flash
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
       propertyPath: m_RootOrder
@@ -1003,6 +1035,42 @@ PrefabInstance:
     - target: {fileID: 400006, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -8.799805
+      objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.02e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.5081e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
+      propertyPath: LightsModule.randomDistribution
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
+      propertyPath: LightsModule.ratio
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
+      propertyPath: LightsModule.randomDistribution
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
+      propertyPath: LightsModule.ratio
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: 30b4cc2728d8cec499fad63ba93785a4, type: 3}
+      propertyPath: LightsModule.randomDistribution
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
