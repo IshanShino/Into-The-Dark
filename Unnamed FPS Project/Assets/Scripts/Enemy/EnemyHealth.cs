@@ -7,6 +7,12 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int enemyMaxHP = 200;
     [SerializeField] int enemyCurrentHP = 0;
 
+    bool isDead = false;
+
+    public bool IsDead()
+    {
+        return isDead; 
+    }
     void Start()
     {   
         enemyCurrentHP = enemyMaxHP;
@@ -18,7 +24,15 @@ public class EnemyHealth : MonoBehaviour
         enemyCurrentHP -= damage;
         if (enemyCurrentHP <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+    
+    void Die() 
+    {   
+        if (isDead) return;
+        isDead = true;
+        GetComponent<Animator>().SetTrigger("die");
+        
     }
 }

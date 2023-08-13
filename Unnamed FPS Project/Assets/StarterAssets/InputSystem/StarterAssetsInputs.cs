@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 namespace StarterAssets
 {
 	public class StarterAssetsInputs : MonoBehaviour
-	{
+	{	
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
@@ -22,7 +22,7 @@ namespace StarterAssets
 
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
-		{
+		{	
 			MoveInput(value.Get<Vector2>());
 		}
 

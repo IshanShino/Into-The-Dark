@@ -40,10 +40,7 @@ public class Weapon : MonoBehaviour
 
     private void PlayMuzzleFlash()
     {
-        if (muzzleFlash.isPlaying == false)
-        {   
-            muzzleFlash.Play();
-        }
+        muzzleFlash.Play();
     }
 
     void ProcessRaycast()
