@@ -31,12 +31,12 @@ Transform:
   m_GameObject: {fileID: 1028991780692717051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.221, y: 1.221, z: 1.221}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5237823783821880357}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &4838979490704545932
 CapsuleCollider:
@@ -71,7 +71,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -95,7 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a0c73a4d31868439b934cabd5988d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
   chaseRange: 5
   turnSpeed: 5
 --- !u!114 &5209357052433342835
@@ -145,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6743950ff84e2654f91b1176d1157474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 8980478290297122308, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  target: {fileID: 0}
   enemyDamage: 20
 --- !u!1001 &5237823783822014187
 PrefabInstance:

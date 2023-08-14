@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Weapon : MonoBehaviour
 {
@@ -11,13 +12,23 @@ public class Weapon : MonoBehaviour
     [SerializeField] float fireRate = 5f;
     [SerializeField] Ammo ammoSlot;
     [SerializeField] AmmoTypes ammoTypes;
+    [SerializeField] TextMeshProUGUI ammoText;
 
     private float nextTimeToFire = 0;
 
+    AudioSource s;
+    [SerializeField] AudioClip gunShot;
+
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
-    void Update()
+
+    void Start()
     {
+        s = GetComponent<AudioSource>();
+    }
+    void Update()
+    {   
+        DisplayAmmo();
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {   
             nextTimeToFire = Time.time + 1f / fireRate; 
@@ -27,8 +38,9 @@ public class Weapon : MonoBehaviour
     void Shoot()
     {   
         if (ammoSlot.AmmoAmount(ammoTypes) > 0)
-            {
+            {   
                 PlayMuzzleFlash();
+                s.PlayOneShot(gunShot);
                 ProcessRaycast();
                 ammoSlot.ReduceCurrentAmmo(ammoTypes);
             }
@@ -63,5 +75,11 @@ public class Weapon : MonoBehaviour
     {
         GameObject impact = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impact, 1);
+    }
+
+    void DisplayAmmo()
+    {
+        int currentAmmo = ammoSlot.AmmoAmount(ammoTypes);
+        ammoText.text = currentAmmo.ToString();
     }
 }

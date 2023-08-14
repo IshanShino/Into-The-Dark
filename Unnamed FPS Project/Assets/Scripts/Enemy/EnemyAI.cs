@@ -8,6 +8,8 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] float chaseRange = 5f;
     [SerializeField] float turnSpeed = 5f;
+    [SerializeField] AudioClip engageSFX;
+    [SerializeField] AudioClip attackSFX;
     
     EnemyHealth enemyHealth;
 
@@ -15,11 +17,13 @@ public class EnemyAI : MonoBehaviour
     bool isProvoked = false;
     NavMeshAgent navMeshAgent;
     Transform target;
+    AudioSource s;
     void Start()
     {   
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyHealth =  GetComponent<EnemyHealth>(); 
         target = FindObjectOfType<PlayerHealth>().transform;
+        s = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,17 +38,25 @@ public class EnemyAI : MonoBehaviour
         distanceToTarget =  Vector3.Distance(target.position, transform.position);
 
         if (isProvoked == true)
-        {
+        {   
             EngageTarget();
         }
         else if (distanceToTarget <= chaseRange)
-        {
+        {   
+            if (!s.isPlaying)
+            {
+                s.PlayOneShot(engageSFX);
+            }
             isProvoked = true;
         }
     }
 
     public void OnDamageTaken()
-    {
+    {   
+        if (!s.isPlaying)
+        {
+            s.PlayOneShot(engageSFX);
+        }
         isProvoked = true;
     }
 
@@ -52,11 +64,11 @@ public class EnemyAI : MonoBehaviour
     {   
         FaceTarget();
         if (distanceToTarget >= navMeshAgent.stoppingDistance)
-        {
+        {   
             ChaseTarget();
         }
         if (distanceToTarget <= navMeshAgent.stoppingDistance)
-        {   
+        {  
             AttackTarget();
         }
     }
@@ -70,6 +82,10 @@ public class EnemyAI : MonoBehaviour
     void AttackTarget()
     {   
         GetComponent<Animator>().SetBool("attack", true);
+        if (!s.isPlaying)
+        {
+            s.PlayOneShot(attackSFX);
+        }
     }
     void FaceTarget()
     {   

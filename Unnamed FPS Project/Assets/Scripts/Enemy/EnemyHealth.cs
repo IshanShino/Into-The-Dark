@@ -6,8 +6,11 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int enemyMaxHP = 200;
     [SerializeField] int enemyCurrentHP = 0;
+    [SerializeField] AudioClip deathSFX;
 
     bool isDead = false;
+
+    AudioSource s;
 
     public bool IsDead()
     {
@@ -16,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {   
         enemyCurrentHP = enemyMaxHP;
+        s = GetComponent<AudioSource>();
     }
     
     public void TakeDamage(int damage)
@@ -32,6 +36,7 @@ public class EnemyHealth : MonoBehaviour
     {   
         if (isDead) return;
         isDead = true;
+        s.PlayOneShot(deathSFX);
         GetComponent<Animator>().SetTrigger("die");
         
     }
